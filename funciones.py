@@ -6,10 +6,6 @@ def loadMatrix():
     return matriz
 
 
-def aniadirBordes(lista, indice):
-    lista.append([indice, 0])
-    return
-
 
 def buscarEntrada(matriz, contador):
     valor = matriz[contador][0]

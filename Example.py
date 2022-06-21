@@ -26,29 +26,28 @@ def find_paths_util(maze, source, destination, visited, path, paths):
 
     # go right (x, y) --> (x + 1, y)
     if x + 1 < N and (not (visited[x + 1][y] != 0)):
-    # if x + 1 < N :
-      # print("1-visited[x + 1][y] : ", visited[x + 1][y], "if1 x :", x, "if1 y :", y)
+
       path.append((x + 1, y))
       find_paths_util(maze,(x + 1, y), destination, visited, path, paths)
       path.pop()
 
     # go left (x, y) --> (x - 1, y)
     if x - 1 >= 0 and (not (visited[x - 1][y] != 0)):
-      print("2-visited[x - 1][y] : ",  visited[x - 1][y], "if1 x :", x, "if1 y :", y)
+
       path.append((x - 1, y))
       find_paths_util(maze, (x - 1, y), destination, visited, path, paths)
       path.pop()
 
     # go up (x, y) --> (x, y + 1)
     if y + 1 < N and (not (visited[x][y + 1] != 0)):
-      print("3-visited[x][y + 1] : ", visited[x][y + 1], "if1 x :", x, "if1 y :", y)
+
       path.append((x, y + 1))
       find_paths_util(maze, (x, y + 1), destination, visited, path, paths)
       path.pop()
 
     # go down (x, y) --> (x, y - 1)
     if y - 1 >= 0 and (not (visited[x][y - 1] != 0)):
-      print("4-visited[x][y - 1] : ", visited[x][y - 1], "if1 x :", x, "if1 y :", y)
+
       path.append((x, y - 1))
       find_paths_util(maze, (x, y - 1), destination, visited, path, paths)
       path.pop()
@@ -68,7 +67,6 @@ def find_paths(maze, source, destination):
   path = [source]
   paths = []
   paths = find_paths_util(maze, source, destination, visited, path, paths)
-  print("Paths with '->' separator between maze cell locations")
 
   return paths
 

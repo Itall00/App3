@@ -6,12 +6,8 @@ def main():
     matriz = loadMatrix()
 
     entrada = buscarEntrada(matriz, 0)
-    #aniadirBordes(path, entrada)
-
     salida = buscarSalida(matriz,0)
-    #aniadirBordes(path,salida)
 
-    #findPaths(matriz, path, entrada, 0)
     N = len(matriz)
 
     maze = np.array(matriz)
