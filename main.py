@@ -1,34 +1,29 @@
 from funciones import *
-from Example import *
+
 
 def main():
     paths = []
-    matriz = loadMatrix()
+    matriz = loadMatrix()  # aqui cargo la matriz
 
-    entrada = buscarEntrada(matriz, 0)
-    salida = buscarSalida(matriz,0)
+    entrada = buscarEntrada(matriz, 0)  # inicio buscando la posicion de entrada de la matriz
+    salida = buscarSalida(matriz, 0)  # inicio buscando la posicion de salida de la matriz
 
-    N = len(matriz)
+    N = len(matriz)  # busco tamaño
 
-    maze = np.array(matriz)
+    mat = np.array(matriz)  # se guarda en mat el arreglo de la matriz
     # print(matriz)
 
-    maze[maze == 1] = 2
-    maze[maze == 0] = 1
-    maze[maze == 2] = 0
-    print(maze)
-    # Start point and destination
-    source = (entrada, 0)  # top left corner
-    destination = (salida, N-1)  # bottom right corner
+    mat[mat == 1] = 2
+    mat[mat == 0] = 1
+    mat[mat == 2] = 0
 
-    # Find all paths
-    paths = find_paths(maze, source, destination)
+    inicio = (entrada, 0)  # inicio del laberinto
+    final = (salida, N - 1)  # final del laberinto
 
-
-
-    print(paths)
+    paths = find_paths(mat, inicio, final)  # le entrego a la funcion la matriz, donde comienza y termina
+    print("Los caminos encontrados son los siguientes:\n")
+    print(paths)  # muestro en pantalla las rutas que se encontraron
 
 
-
-if __name__ == "__main__":
+if __name__ == "__main__":  # comienza la funcion main y ejecuta el codigo
     main()
