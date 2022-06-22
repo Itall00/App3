@@ -23,7 +23,7 @@ def is_valid_cell(x, y, N):  # compruebo que la celda sea valida
     return True
 
 
-def encontrar_patron(mat, inicio, final, visitada, path, paths):
+def encontrar_camino(mat, inicio, final, visitada, path, paths):
 
     if inicio == final:
         paths.append(path[:])  # append copy of current path
@@ -35,27 +35,27 @@ def encontrar_patron(mat, inicio, final, visitada, path, paths):
     visitada[x][y] = 1
 
     # if current cell is a valid and open cell,
-    if is_valid_cell(x, y, N) and mat[x][y]:
+    if celda_valida(x, y, N) and mat[x][y]:
         # Using Breadth First Search on path extension in all direction
 
         if x + 1 < N and (not (visitada[x + 1][y] != 0)):  #me muevo a la derecha
             path.append((x + 1, y))
-            encontrar_patron(mat, (x + 1, y), final, visitada, path, paths)
+            encontrar_camino(mat, (x + 1, y), final, visitada, path, paths)
             path.pop()
 
         if x - 1 >= 0 and (not (visitada[x - 1][y] != 0)):  # me muevo a la izquierda
             path.append((x - 1, y))
-            encontrar_patron(mat, (x - 1, y), final, visitada, path, paths)
+            encontrar_camino(mat, (x - 1, y), final, visitada, path, paths)
             path.pop()
 
         if y + 1 < N and (not (visitada[x][y + 1] != 0)):  # me muevo hacia arriba
             path.append((x, y + 1))
-            encontrar_patron(mat, (x, y + 1), final, visitada, path, paths)
+            encontrar_camino(mat, (x, y + 1), final, visitada, path, paths)
             path.pop()
 
         if y - 1 >= 0 and (not (visitada[x][y - 1] != 0)): #me muevo hacia abajo
             path.append((x, y - 1))
-            encontrar_patron(mat, (x, y - 1), final, visitada, path, paths)
+            encontrar_camino(mat, (x, y - 1), final, visitada, path, paths)
             path.pop()
 
         # Unmark current cell as visited
@@ -73,12 +73,12 @@ def find_paths(mat, inicio, final):  # busca rutas
 
     path = [inicio]
     paths = []
-    paths = encontrar_patron(mat, inicio, final, visitada, path, paths)
+    paths = encontrar_camino(mat, inicio, final, visitada, path, paths)
 
     return paths
 
 # Check if cell (x, y) is valid or not
-def is_valid_cell(x, y, N):
+def celda_valida(x, y, N):
     if x < 0 or y < 0 or x >= N or y >= N:
         return False
 
@@ -97,7 +97,7 @@ def find_paths_util(maze, source, destination, visited, path, paths):
   visited[x][y] = 1
 
   # if current cell is a valid and open cell,
-  if is_valid_cell(x, y, N) and maze[x][y]:
+  if celda_valida(x, y, N) and maze[x][y]:
     # Using Breadth First Search on path extension in all direction
 
     # go right (x, y) --> (x + 1, y)
