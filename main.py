@@ -24,6 +24,5 @@ def main():
     print("Los caminos encontrados son los siguientes:\n")
     print(paths)  # muestro en pantalla las rutas que se encontraron
 
-
 if __name__ == "__main__":  # comienza la funcion main y ejecuta el codigo
     main()
