@@ -13,6 +13,7 @@ def main():
     mat = np.array(matriz)  # se guarda en mat el arreglo de la matriz
     # print(matriz)
 
+    # cambio los unos por ceros y los ceros por unos
     mat[mat == 1] = 2
     mat[mat == 0] = 1
     mat[mat == 2] = 0
@@ -23,6 +24,7 @@ def main():
     paths = find_paths(mat, inicio, final)  # le entrego a la funcion la matriz, donde comienza y termina
     print("Los caminos encontrados son los siguientes:\n")
     print(paths)  # muestro en pantalla las rutas que se encontraron
+
 
 if __name__ == "__main__":  # comienza la funcion main y ejecuta el codigo
     main()
